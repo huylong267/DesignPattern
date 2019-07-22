@@ -30,6 +30,10 @@ class Rectangle{
         return width*height;
     }
 
+    public boolean isSquare(){
+        return  width == height;
+    }
+
     @Override
     public String toString() {
         return "Rectangle{" +
@@ -58,6 +62,15 @@ class Square extends Rectangle{
         super.setWidth(height);
     }
 }
+
+class  RectangleFactory {
+    public  static  Rectangle newRectangle(int width, int height){
+        return  new Rectangle(width,height);
+    }
+    public static Rectangle newSquare(int side){
+        return new Rectangle(side,side);
+    }
+}
 class Demo{
     static  void useIt(Rectangle r){
         int width  = r.getWidth();
@@ -72,4 +85,8 @@ class Demo{
         sq.setWidth(5);
         useIt(sq);
     }
+
+    // các đôi tượng của class cha có thể thay thế bởi các đối tượng
+    // của class con mà không làm thay đổi tính đúng đắn của chương trình
+    //Ví dụ trong trường hợp cách tính Area của 2 hình là khác nhau  , nên có 1 interface tính area và viết lại hàm tính area cho từng hình
 }
